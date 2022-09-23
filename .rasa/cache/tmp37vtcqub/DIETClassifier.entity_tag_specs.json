@@ -1,0 +1,20 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-order_number",
+      "2": "I-order_number",
+      "3": "L-order_number",
+      "4": "U-order_number",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-order_number": 1,
+      "I-order_number": 2,
+      "L-order_number": 3,
+      "U-order_number": 4,
+      "O": 0
+    },
+    "num_tags": 5
+  }
+]

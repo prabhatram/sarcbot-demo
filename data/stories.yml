@@ -1,0 +1,39 @@
+version: "3.1"
+
+stories:
+
+- story: entertain user 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_options
+  - intent: entertain_me
+  - action: utter_entertain
+  - action: utter_anything_else
+  - intent: deny
+  - action: utter_goodbye
+
+- story: track order
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_options
+  - intent: my_order
+  #- action: utter_track_order
+  #- intent: order_details
+  - action: order_number_form
+  - active_loop: order_number_form
+  - slot_was_set:
+    - requested_slot: order_number
+  - slot_was_set:
+    - order_number: order_number
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null 
+  - action: utter_order_valid
+  #- action: query_order_details
+  - action: utter_anything_else
+  - intent: deny
+  - action: utter_goodbye
+
+

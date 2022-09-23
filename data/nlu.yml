@@ -1,0 +1,75 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: entertain_me
+  examples: |
+    - Make me laugh
+    - entertain me
+    - Be funny
+    - Tell me a joke
+    - I'd like to hear a joke
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: my_order
+  examples: |
+    - Where is my order?
+    - I want to know about my order
+    - Order information please
+    - Track my order
+
+- intent: order_details
+  examples: |
+    - My order number is [O123](order_number)
+    - Here's my order number [O456](order_number)
+    - [O765](order_number)
+    - Order number is [O332](order_number)
+    - Order number is [O435](order_number)
+    - Here is the order number [O465](order_number) 
+    - Here it is [O444](order_number)
+    - Yes, here it is [O475](order_number)
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+

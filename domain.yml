@@ -1,0 +1,83 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - entertain_me
+  - my_order
+  - order_details
+  - bot_challenge
+
+entities:
+  - order_number
+
+slots:
+  order_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: order_number
+      conditions:
+      - active_loop: order_number_form
+        #requested_slot: order_number
+
+forms:
+  order_number_form:
+    required_slots:
+    - order_number
+
+actions:
+ #- query_order_details
+ - utter_order_valid
+ - utter_ask_order_number
+ - validate_order_number_form
+
+responses:
+  utter_greet:
+  - text: "Hello, there. So nice of you to bother me. I’m here to help you, because you clearly can’t help yourself."
+
+  utter_track_order:
+  - text: "In that case, do me a favour and share your order number"
+  
+  utter_goodbye:
+  - text: "Good riddance"
+
+  utter_options:
+  - text: "Here are your options. \n
+  \t 1. Provide company information. \n
+  \t 2. Track Order. \n
+  \t 3. Entertain you. \n
+  So, what is it going to be, Your Highness"
+
+  utter_ask_order_number:
+  - text: "Would you take the trouble of telling me your order number"
+
+  utter_order_valid:
+  - text: "Good job at providing the correct order number"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  # utter_ask_order_number:
+  # - text: "What is your order number?"
+
+  #utter_dont_know_language:
+  #- text: "Sorry, Hoze, don't know what you say. Speak E-N-G-L-I-S-H"
+  
+  #utter_what_nonsense:
+  #- text: "You wouldn't like it if I asked you to quack like a duck, right? /n
+  #So, can we stick to what I actually am built for?"
+
+  utter_entertain:
+  - text: "Here’s a joke for you: Look in the mirror "
+    image: "https://media.giphy.com/media/BFYLNwlsSNtcc/giphy.gif?cid=ecf05e47tl1wa16rrmdk4hlqhc84h5mfjsu8bn8a77q7t0g9&rid=giphy.gif&ct=g"
+  
+  utter_anything_else:
+  - text: "What else can I do for you, Your Highness?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
