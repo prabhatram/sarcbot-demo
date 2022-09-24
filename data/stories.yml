@@ -31,9 +31,9 @@ stories:
     - requested_slot: null
   - active_loop: null 
   - action: utter_order_valid
-  #- action: query_order_details
-  - action: utter_anything_else
-  - intent: deny
-  - action: utter_goodbye
+  - action: query_order_details
+  #- action: utter_anything_else
+  #- intent: deny
+  #- action: utter_goodbye
 
 

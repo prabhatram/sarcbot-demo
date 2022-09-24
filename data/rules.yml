@@ -27,7 +27,8 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_order_valid
-  - action: utter_anything_else
+  - action: query_order_details
+  #- action: utter_anything_else
   #- intent: deny
   #- action: utter_goodbye
 

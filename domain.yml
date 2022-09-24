@@ -30,7 +30,7 @@ forms:
     - order_number
 
 actions:
- #- query_order_details
+ - query_order_details
  - utter_order_valid
  - utter_ask_order_number
  - validate_order_number_form

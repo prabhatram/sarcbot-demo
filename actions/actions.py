@@ -68,61 +68,61 @@ class ValidateOrderNumberForm(FormValidationAction):
         return {"order_number": order}
         #return f"Good job at providing a proper order number {(order)}."
 
-# class QueryOrderDetails(Action):
+class QueryOrderDetails(Action):
 
-#     def name(self) -> Text:
-#         return "query_order_details"
+    def name(self) -> Text:
+        return "query_order_details"
 
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#         """
-#         Runs a query using only the order ID column, outputs an utterance 
-#         to the user w/ the relevent 
-#         information for one of the returned rows.
-#         """
-#         conn = DbQueryingMethods.create_connection(db_file="sarcdb/SarcbotDB.db")
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        """
+        Runs a query using only the order ID column, outputs an utterance 
+        to the user w/ the relevent 
+        information for one of the returned rows.
+        """
+        conn = DbQueryingMethods.create_connection(db_file="sarcdb/SarcbotDB.db")
 
-#         slot_value = tracker.get_slot("order_number")
+        slot_value = tracker.get_slot("order_number")
 
-#         get_query_results = DbQueryingMethods.select_by_slot(conn=conn,slot_value=slot_value)
+        get_query_results = DbQueryingMethods.select_by_slot(conn=conn,slot_value=slot_value)
         
-#         dispatcher.utter_message(text=str(get_query_results))
+        dispatcher.utter_message(text=str(get_query_results))
 
-#         return 
+        return 
 
 
-# class DbQueryingMethods:
-#     def create_connection(db_file):
-#         """ 
-#         create a database connection to the SQLite database
-#         specified by the db_file
-#         :param db_file: database file
-#         :return: Connection object or None
-#         """
-#         conn = None
-#         try:
-#             conn = sqlite3.connect(db_file)
-#         except Error as e:
-#             print(e)
+class DbQueryingMethods:
+    def create_connection(db_file):
+        """ 
+        create a database connection to the SQLite database
+        specified by the db_file
+        :param db_file: database file
+        :return: Connection object or None
+        """
+        conn = None
+        try:
+            conn = sqlite3.connect(db_file)
+        except Error as e:
+            print(e)
 
-#         return conn
+        return conn
 
-#     def select_by_slot(conn, slot_value):
-#         """
-#         Query all rows in the Orders table
-#         :param conn: the Connection object
-#         :return:
-#         """
-#         cur = conn.cursor()
-#         cur.execute(f'''SELECT EstimatedDeliveryDate from Orders
-#                     WHERE OrderID="{slot_value}"''')
+    def select_by_slot(conn, slot_value):
+        """
+        Query all rows in the Orders table
+        :param conn: the Connection object
+        :return:
+        """
+        cur = conn.cursor()
+        cur.execute(f'''SELECT EstimatedDeliveryDate from Orders
+                    WHERE OrderID="{slot_value}"''')
 
-#         # return an array
-#         deliveryDate = cur.fetchall()
+        # return an array
+        deliveryDate = cur.fetchall()
 
-#         if len(list(deliveryDate)) < 1:
-#             return "There is no such order number."
-#         else:
-#             for row in deliveryDate:
-#                 return f"Looks like your order will be delivered by {(row[0])}."
+        if len(list(deliveryDate)) < 1:
+            return "There is no such order number."
+        else:
+            for row in deliveryDate:
+                return f"Looks like your order will be delivered by {(row[0])}."
