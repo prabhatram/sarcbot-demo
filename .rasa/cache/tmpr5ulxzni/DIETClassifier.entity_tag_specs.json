@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-finger_pulled",
+      "2": "I-finger_pulled",
+      "3": "L-finger_pulled",
+      "4": "U-finger_pulled",
+      "5": "B-order_number",
+      "6": "I-order_number",
+      "7": "L-order_number",
+      "8": "U-order_number",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-finger_pulled": 1,
+      "I-finger_pulled": 2,
+      "L-finger_pulled": 3,
+      "U-finger_pulled": 4,
+      "B-order_number": 5,
+      "I-order_number": 6,
+      "L-order_number": 7,
+      "U-order_number": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

@@ -10,19 +10,32 @@ intents:
   - order_details
   - bot_challenge
 
+
 entities:
   - order_number
 
 slots:
   order_number:
-    type: text
-    influence_conversation: true
+    type: categorical
+    values:
+      - O123
+      - O387
+    #influence_conversation: true
     mappings:
     - type: from_entity
       entity: order_number
       conditions:
       - active_loop: order_number_form
         #requested_slot: order_number
+  # finger_pulled:
+  #   type: categorical
+  #   values:
+  #     - thumb
+  #     - forefinger
+  #     - middle finger
+  #   mappings:
+  #   - type: from_entity
+  #     entity: finger_pulled
 
 forms:
   order_number_form:
@@ -51,15 +64,21 @@ responses:
   \t 2. Track Order. \n
   \t 3. Entertain you. \n
   So, what is it going to be, Your Highness"
-
+  
   utter_ask_order_number:
-  - text: "Would you take the trouble of telling me your order number"
+  - text: "Take the trouble of picking one of the orders below:"
+    buttons:
+    - title: "O123"
+      payload: '/order_details{{"order_number" : "O123"}}'
+    - title: "O387"
+      payload: '/order_details{{"order_number" : "O387"}}'
 
   utter_order_valid:
   - text: "Good job at providing the correct order number"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
 
   # utter_ask_order_number:
   # - text: "What is your order number?"
